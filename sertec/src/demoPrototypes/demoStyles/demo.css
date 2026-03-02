@@ -1,0 +1,22 @@
+
+
+
+.piece{
+width: 200px;
+  height: 200px;
+  border-radius: 50%; /* Makes the div a circle */
+  
+  /* The magic happens here: 
+     Color 1 goes from 0 degrees to 120 degrees
+     Color 2 goes from 120 to 260
+     Color 3 goes from 260 to 360 */
+  background: conic-gradient(
+    #ff6384 0deg 120deg,
+    #36a2eb 120deg 260deg,
+    #ffce56 260deg 360deg
+  );
+
+
+  -webkit-mask: radial-gradient(circle, transparent 50%, black 51%);
+  mask: radial-gradient(circle, transparent 50%, black 51%);
+}
