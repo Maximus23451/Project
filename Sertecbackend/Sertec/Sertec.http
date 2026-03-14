@@ -1,0 +1,6 @@
+@Sertec_HostAddress = http://localhost:5252
+
+GET {{Sertec_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
