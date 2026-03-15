@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gergő\\Desktop\\Kódok\\Visual studio\\Sertec\\Sertec\\Sertec.csproj": {}
+    "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Sertec.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gergő\\Desktop\\Kódok\\Visual studio\\Sertec\\Sertec\\Sertec.csproj": {
+    "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Sertec.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gergő\\Desktop\\Kódok\\Visual studio\\Sertec\\Sertec\\Sertec.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Sertec.csproj",
         "projectName": "Sertec",
-        "projectPath": "C:\\Users\\Gergő\\Desktop\\Kódok\\Visual studio\\Sertec\\Sertec\\Sertec.csproj",
-        "packagesPath": "C:\\Users\\Gergő\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gergő\\Desktop\\Kódok\\Visual studio\\Sertec\\Sertec\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Sertec.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Gergő\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -69,6 +70,8 @@
               "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.13, )"
             },
@@ -100,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

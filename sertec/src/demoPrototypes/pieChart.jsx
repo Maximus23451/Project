@@ -52,8 +52,20 @@ function PieChartDemo(){
         const start = i === 0 ? 0 : cum[i - 1];
         const end = cum[i];
         const color = COLORS[i] || 'gray';
+
         return `${color} ${start}deg ${end}deg`;
-      });
+        })
+
+
+        let names=document.querySelector(".names")
+        let colorDiv=document.createElement("div")
+        INITIAL_DATA.forEach(item=>{
+          console.log(item)
+          colorDiv.innerHTML=`<div> <div style='background-color: ${COLORS[0]}; width: 10px; height: 10px; '></div> ${item.name}</div>`
+
+          names.appendChild(colorDiv)
+
+        });
       pieceRef.current.style.background = `conic-gradient(${segments.join(', ')})`;
     }
 
@@ -66,6 +78,11 @@ function PieChartDemo(){
       <div className='chart'>
         <div className='piece' ref={pieceRef}>
         </div>
+
+      </div>
+
+
+      <div className='names'>
 
       </div>
     
