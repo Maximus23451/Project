@@ -8,5 +8,7 @@ namespace Sertec.Models
         public int pid { get; set; }
 
         public string name { get; set; }
+
+        public string serialNumber { get; set; }
     }
 }
