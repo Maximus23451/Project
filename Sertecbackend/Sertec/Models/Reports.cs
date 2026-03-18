@@ -9,13 +9,17 @@ namespace Sertec.Models
         public int reportId { get; set; }
 
         [ForeignKey("questions")]
-        public Questions qId { get; set; }
+        public int qId { get; set; }
 
         public string report { get; set; }
         public DateTime reportCreated { get; set; }
 
         [ForeignKey("users")]
-        public Users uId { get; set; }
+        public int uId { get; set; }
+
+        public virtual Users users { get; set; }
+
+        public virtual Questions questions { get; set; }
 
     }
 }

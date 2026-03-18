@@ -8,14 +8,16 @@ namespace Sertec.Models
         [Key]
         public int uid { get; set; }
 
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+        public byte[]? PasswordHash { get; set; }
+        public byte[]? PasswordSalt { get; set; }
 
         public string? Email { get; set; }
 
-        public string rfid { get; set; }
+        public string? rfid { get; set; }
+
+        public DateTime? LastPwChange { get; set; }
 
         [ForeignKey("RoleId")]
         public int roleid { get; set; }

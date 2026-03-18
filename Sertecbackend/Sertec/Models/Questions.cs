@@ -9,11 +9,16 @@ namespace Sertec.Models
         public int qid { get; set; }
 
         [ForeignKey("parts")]
-        public Parts partsId { get; set; }
+        public int partsId { get; set; }
 
         public string question { get; set; }
 
         [ForeignKey("roles")]
-        public Roles roleId { get; set; }
+        public int roleId { get; set; }
+
+
+        public virtual Parts parts { get; set; }
+
+        public virtual Roles roles { get; set; }
     }
 }

@@ -13,6 +13,10 @@ namespace Sertec.Data
         public DbSet<Parts> parts { get; set; }
         public DbSet<MachineParts> machineParts { get; set; }
         public DbSet<Questions> questions { get; set; }
+        public DbSet<Shift> shifts { get; set; }
+        public DbSet<Reports> reports { get; set; }
+        public DbSet<ShiftParts> shiftParts { get; set; }
+        public DbSet<UserShifts> userShifts { get; set; }
 
         public Appdbcontext(DbContextOptions<Appdbcontext> options) : base(options)
         {
