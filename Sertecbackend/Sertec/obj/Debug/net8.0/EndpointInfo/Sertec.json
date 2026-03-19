@@ -618,17 +618,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Shift"
+                "$ref": "#/components/schemas/shiftPostDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Shift"
+                "$ref": "#/components/schemas/shiftPostDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Shift"
+                "$ref": "#/components/schemas/shiftPostDTO"
               }
             }
           }
@@ -927,25 +927,16 @@
         "tags": [
           "UserShifts"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -971,24 +962,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -1096,40 +1070,6 @@
   },
   "components": {
     "schemas": {
-      "Shift": {
-        "type": "object",
-        "properties": {
-          "sId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "planned": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "uph": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "waste": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "ups": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "units": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "unPlanned": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "WeatherForecast": {
         "type": "object",
         "properties": {
@@ -1181,6 +1121,36 @@
           "role": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "shiftPostDTO": {
+        "type": "object",
+        "properties": {
+          "planned": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uph": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "waste": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ups": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "units": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unPlanned": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

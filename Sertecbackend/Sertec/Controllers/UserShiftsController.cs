@@ -10,7 +10,13 @@ namespace Sertec.Controllers
     public class userShiftGetDTO
     {
         public int shiftId { get; set; }
-        public List<Users> users { get; set; }
+        public List<userDTO> users { get; set; }
+    }
+
+    public class userDTO
+    {
+        public string name { get; set; }
+        public int uid { get; set; }
     }
 
 
@@ -29,28 +35,96 @@ namespace Sertec.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = ctx.userShifts
-                .Select(x => new userShiftGetDTO
-                {
-                    shiftId = x.shiftId,
-                    users=ctx.users.Where(u => u.uid == x.userId).ToList()
-                })
-                .ToList();
+            try
+            {
+                var result = ctx.shifts
+              .Select(shift => new userShiftGetDTO
+              {
+                  shiftId = shift.sId,
+                  users = ctx.userShifts
+                      .Where(us => us.shiftId == shift.sId)
+                      .Select(us =>new userDTO
+                      {
+                          uid=us.userId,
+                          name=us.users.Username
+                      })
+                      .ToList()
+              })
+              .ToList();
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+
         }
 
         // GET api/<UserShiftsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+               var result = ctx.shifts
+              .Select(shift => new userShiftGetDTO
+              {
+                  shiftId = shift.sId,
+                  users = ctx.userShifts
+                      .Where(us => us.shiftId == shift.sId)
+                      .Select(us => new userDTO
+                      {
+                          uid = us.userId,
+                          name = us.users.Username
+                      })
+                      .ToList()
+              })
+              .Where(x=>x.shiftId==id)
+              .FirstOrDefault();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
         }
 
         // POST api/<UserShiftsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(int userId)
         {
+
+            try
+            {
+                var shift = ctx.shifts
+                .Select(x => x.sId)
+                .OrderBy(x=>x)
+                .Last();
+
+                ctx.userShifts.Add(new UserShifts
+                {
+                    userId = userId,
+                    shiftId = shift
+                });
+
+
+                ctx.SaveChanges();
+
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                
+                return BadRequest(ex.Message);
+
+
+            }
+
+
+
+
         }
 
         // PUT api/<UserShiftsController>/5

@@ -13,12 +13,14 @@ namespace Sertec.Controllers
         public string question { get; set; }
         public string serialNumber { get; set; }
         public string role { get; set; }
+        public int frequency { get; set; }
     }
     public class questionGetDTO
     {
         public string question { get; set; }
         public string role { get; set; }
         public string part { get; set; }
+        public int frequency { get; set; }
     }
 
 
@@ -40,17 +42,25 @@ namespace Sertec.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-
-            var questions = ctx.questions
+            try
+            {
+                var questions = ctx.questions
                 .Select(x => new questionGetDTO
                 {
                     question = x.question,
                     role = x.roles.Name,
-                    part = x.parts.name
+                    part = x.parts.name,
+                    frequency = x.frequency
                 })
                 .ToList();
 
-            return Ok(questions);
+                return Ok(questions);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+            
         }
 
         // GET api/<QuestionsController>/5
@@ -64,26 +74,36 @@ namespace Sertec.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] questionPostDTO value)
         {
-            var role = ctx.roles
-                .Where(x => x.Name == value.role)
-                .Select(x => x.Rid)
-                .FirstOrDefault();
-
-            var part = ctx.parts
-                .Where(x=>x.serialNumber==value.serialNumber)
-                .Select(x=>x.pid)
-                .FirstOrDefault();
-
-            ctx.questions.Add(new Questions
+            try
             {
-                question = value.question,
-                partsId = part,
-                roleId = role
-            });
+                var role = ctx.roles
+                    .Where(x => x.Name == value.role)
+                    .Select(x => x.Rid)
+                    .FirstOrDefault();
 
-            ctx.SaveChanges();
+                var part = ctx.parts
+                    .Where(x => x.serialNumber == value.serialNumber)
+                    .Select(x => x.pid)
+                    .FirstOrDefault();
 
-            return Created();
+                ctx.questions.Add(new Questions
+                {
+                    question = value.question,
+                    partsId = part,
+                    roleId = role,
+                    frequency = value.frequency
+                });
+
+                ctx.SaveChanges();
+
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            
 
 
 
@@ -99,21 +119,29 @@ namespace Sertec.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var question=ctx.questions
-                .Where(x=>x.qid==id)
-                .FirstOrDefault();
-
-            if (question != null)
+            try
             {
-                ctx.questions.Remove(question);
-                ctx.SaveChanges();
+                var question = ctx.questions
+               .Where(x => x.qid == id)
+               .FirstOrDefault();
 
-                return Ok();
+                if (question != null)
+                {
+                    ctx.questions.Remove(question);
+                    ctx.SaveChanges();
+
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound();
+                return BadRequest(ex.Message);
             }
+           
 
 
 

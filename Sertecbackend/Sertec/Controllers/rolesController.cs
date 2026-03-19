@@ -21,9 +21,17 @@ namespace Sertec.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result= ctx.roles.ToList();
+            try
+            {
+                var result = ctx.roles.ToList();
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+
         }
 
         // GET api/<rolesController>/5

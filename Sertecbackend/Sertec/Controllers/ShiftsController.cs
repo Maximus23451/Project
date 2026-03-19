@@ -7,6 +7,15 @@ using Sertec.Models;
 namespace Sertec.Controllers
 {
 
+    public class shiftPostDTO
+    {
+        public int planned { get; set; }
+        public int uph { get; set; }
+        public int waste { get; set; }
+        public int ups { get; set; }
+        public int units { get; set; }
+        public int unPlanned { get; set; }
+    }
 
 
 
@@ -25,43 +34,69 @@ namespace Sertec.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result=ctx.shifts.ToList();
+            try
+            {
+                var result = ctx.shifts.ToList();
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+
         }
 
         // GET api/<ShiftsController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var result=ctx.shifts
+            try
+            {
+                var result = ctx.shifts
                 .Where(x => x.sId == id)
                 .FirstOrDefault();
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+
         }
 
         // POST api/<ShiftsController>
         [HttpPost]
-        public IActionResult Post([FromBody] Shift value)
+        public IActionResult Post([FromBody] shiftPostDTO value)
         {
 
-            ctx.shifts.Add(new Shift
+            try
             {
-                sId=value.sId,
-                planned=value.planned,
-                uph=value.uph,
-                waste=value.waste,
-                ups=value.ups,
-                units=value.units,
-                unPlanned=value.unPlanned
+
+                ctx.shifts.Add(new Shift
+                {
+                    planned = value.planned,
+                    uph = value.uph,
+                    waste = value.waste,
+                    ups = value.ups,
+                    units = value.units,
+                    unPlanned = value.unPlanned
 
 
-            });
+                });
 
-            ctx.SaveChanges();
+                ctx.SaveChanges();
 
-            return Created();
+                return Created();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
 
         }
 

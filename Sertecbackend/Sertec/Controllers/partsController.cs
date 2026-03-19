@@ -45,25 +45,36 @@ namespace Sertec.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] partsPostDTO value)
         {
-            var sn = ctx.parts
+            try
+            {
+                var sn = ctx.parts
                 .Where(x => x.serialNumber == value.serialNumber)
                 .FirstOrDefault();
-            if (sn != null)
-            {
-                return Conflict("Serial number already exists");
-            }
-            else
-            {
-                ctx.parts.Add(new Parts
+
+
+                if (sn != null)
                 {
-                    name = value.name,
-                    serialNumber = value.serialNumber
-                });
+                    return Conflict("Serial number already exists");
+                }
+                else
+                {
+                    ctx.parts.Add(new Parts
+                    {
+                        name = value.name,
+                        serialNumber = value.serialNumber
+                    });
 
-                ctx.SaveChanges();
+                    ctx.SaveChanges();
 
-                return Created();
+                    return Created();
+                }
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
 
 
         }

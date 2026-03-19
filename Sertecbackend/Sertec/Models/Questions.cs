@@ -16,6 +16,8 @@ namespace Sertec.Models
         [ForeignKey("roles")]
         public int roleId { get; set; }
 
+        public int frequency { get; set; }
+
 
         public virtual Parts parts { get; set; }
 

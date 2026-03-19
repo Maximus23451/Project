@@ -29,7 +29,9 @@ namespace Sertec.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = ctx.machineParts
+            try
+            {
+                var result = ctx.machineParts
                 .Select(x => new machinePartGetDTO
                 {
                     mid = x.Machines.machineId,
@@ -39,7 +41,14 @@ namespace Sertec.Controllers
                 .ToList();
 
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+
+
         }
 
         // GET api/<machinePartsController>/5

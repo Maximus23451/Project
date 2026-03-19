@@ -51,7 +51,9 @@ namespace Sertec.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = ctx.users
+            try
+            {
+                var result = ctx.users
                 .Select(x => new userGetDTO
                 {
                     id = x.uid,
@@ -62,7 +64,13 @@ namespace Sertec.Controllers
                 });
 
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+            
         }
 
         // GET api/<ValuesController>/5
@@ -76,37 +84,46 @@ namespace Sertec.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] userPostDTO value)
         {
-            var user = ctx.users
+            try
+            {
+                var user = ctx.users
                 .Where(x => x.Username == value.username)
                 .FirstOrDefault();
 
-            if (user!=null)
-            {
-                return Conflict("Username already exists");
-            }
-            else
-            {
-                var role = ctx.roles
-                    .Where(x => x.Name == value.role)
-                    .FirstOrDefault();
-
-                PasswordManager.CreatePasswordHash(value.password, out byte[] passwordHash, out byte[] passwordSalt);
-                ctx.users.Add(new Users
+                if (user != null)
                 {
-                    Username = value.username,
-                    PasswordHash = passwordHash,
-                    PasswordSalt = passwordSalt,
-                    Email = value.email,
-                    rfid = value.rfid,
-                    roleid = role.Rid,
-                    LastPwChange = DateTime.Today
+                    return Conflict("Username already exists");
+                }
+                else
+                {
+                    var role = ctx.roles
+                        .Where(x => x.Name == value.role)
+                        .FirstOrDefault();
 
-                });
+                    PasswordManager.CreatePasswordHash(value.password, out byte[] passwordHash, out byte[] passwordSalt);
+                    ctx.users.Add(new Users
+                    {
+                        Username = value.username,
+                        PasswordHash = passwordHash,
+                        PasswordSalt = passwordSalt,
+                        Email = value.email,
+                        rfid = value.rfid,
+                        roleid = role.Rid,
+                        LastPwChange = DateTime.Today
+
+                    });
 
 
-                ctx.SaveChanges();
-                return Created();
+                    ctx.SaveChanges();
+                    return Created();
+                }
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            
 
 
 
@@ -123,42 +140,49 @@ namespace Sertec.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(string uname, userPatchDTO value)
         {
-
-            var user = ctx.users
+            try
+            {
+                var user = ctx.users
                 .Where(x => x.Username == uname)
                 .FirstOrDefault();
 
-            if (user == null)
-            {
-                return NotFound("User not found");
-            }
-            else
-            {
-                if (value.username != null) user.Username = value.username;
-                
-                if (value.email != null) user.Email = value.email;
-                if (value.password != null)
+                if (user == null)
                 {
-                    PasswordManager.CreatePasswordHash(value.password, out byte[] passwordHash, out byte[] passwordSalt);
-
-                    user.PasswordHash = passwordHash;
-                    user.PasswordSalt = passwordSalt;
-                    user.LastPwChange = DateTime.Today;
+                    return NotFound("User not found");
                 }
-                if (value.role != null)
+                else
                 {
-                    var r = ctx.roles
-                        .Where(x => x.Name == value.role)
-                        .Select(x => x.Rid)
-                        .FirstOrDefault();
+                    if (value.username != null) user.Username = value.username;
 
-                    user.roleid = r;
+                    if (value.email != null) user.Email = value.email;
+                    if (value.password != null)
+                    {
+                        PasswordManager.CreatePasswordHash(value.password, out byte[] passwordHash, out byte[] passwordSalt);
 
+                        user.PasswordHash = passwordHash;
+                        user.PasswordSalt = passwordSalt;
+                        user.LastPwChange = DateTime.Today;
+                    }
+                    if (value.role != null)
+                    {
+                        var r = ctx.roles
+                            .Where(x => x.Name == value.role)
+                            .Select(x => x.Rid)
+                            .FirstOrDefault();
+
+                        user.roleid = r;
+
+                    }
+                    ctx.SaveChanges();
+
+                    return Ok("User updated successfully");
                 }
-                ctx.SaveChanges();
-
-                return Ok("User updated successfully");
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
 
 
 
