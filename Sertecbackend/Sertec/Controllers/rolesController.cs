@@ -6,6 +6,13 @@ using Sertec.Models;
 
 namespace Sertec.Controllers
 {
+
+    public class rolesPostDTO
+    {
+        public string name { get; set; }
+    }
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class rolesController : ControllerBase
@@ -25,11 +32,13 @@ namespace Sertec.Controllers
             {
                 var result = ctx.roles.ToList();
 
+                if (result == null) return NotFound();
+
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                return NoContent();
+                return BadRequest(ex.Message);
             }
 
         }
@@ -43,8 +52,36 @@ namespace Sertec.Controllers
 
         // POST api/<rolesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] rolesPostDTO value)
         {
+            try
+            {
+                var role = ctx.roles
+                    .Where(x => x.Name == value.name)
+                    .FirstOrDefault();
+
+                if (role == null)
+                {
+
+                    ctx.roles.Add(new Roles
+                    {
+                        Name = value.name
+                    });
+
+                    return Created();
+
+                }
+
+                return Conflict("This role already exists");
+
+
+
+
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         // PUT api/<rolesController>/5

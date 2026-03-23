@@ -4,7 +4,6 @@ using Sertec.Models;
 using Sertec.UserManager;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Sertec.Controllers
 {

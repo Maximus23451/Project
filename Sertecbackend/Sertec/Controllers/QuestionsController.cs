@@ -23,7 +23,13 @@ namespace Sertec.Controllers
         public int frequency { get; set; }
     }
 
-
+    public class questionPatchDTO
+    {
+        public string question { get; set; }
+        public int partId { get; set; }
+        public string role { get; set; }
+        public int frequency { get; set; }
+    }
 
 
     [Route("api/[controller]")]
@@ -108,6 +114,51 @@ namespace Sertec.Controllers
 
 
         }
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id, [FromBody] questionPatchDTO value)
+        {
+
+            try
+            {
+                var question = ctx.questions
+                .Where(x => x.qid == id)
+                .FirstOrDefault();
+
+                if (question != null)
+                {
+                    if (value.question != null) question.question = value.question;
+                    if (value.partId != null) question.partsId = value.partId;
+                    if (value.frequency != null) question.frequency = value.frequency;
+                    if (value.role != null)
+                    {
+                        var role = ctx.roles
+                            .Where(x => x.Name == value.role)
+                            .Select(x => x.Rid)
+                            .FirstOrDefault();
+
+                        question.roleId = role;
+
+                    }
+                }
+
+                ctx.SaveChanges();
+
+                return Ok();
+
+
+            }
+            catch (Exception ex) { 
+
+                return BadRequest(ex.Message);
+
+            }
+            
+
+
+
+        }
+
+
 
         // PUT api/<QuestionsController>/5
         [HttpPut("{id}")]

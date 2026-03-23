@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sertec.Data;
 using Sertec.Models;
+using System.Diagnostics.CodeAnalysis;
 
 
 
@@ -16,6 +17,18 @@ namespace Sertec.Controllers
         public string serialNumber { get; set; }
     }
 
+    public class partsGetDTO
+    {
+        public string name { get; set; }
+        public string serialNumber { get; set; }
+    }
+
+    public class partsFilterDTO
+    {
+        public string serialNumber { get; set; }
+    }
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class partsController : ControllerBase
@@ -29,16 +42,54 @@ namespace Sertec.Controllers
 
         // GET: api/<partsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var result = ctx.parts
+               .Select(x => new partsGetDTO
+               {
+                   name = x.name,
+                   serialNumber = x.serialNumber
+               })
+               .ToList();
+
+                if(result==null) return NotFound();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+           
         }
 
         // GET api/<partsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public IActionResult Get([FromBody] partsFilterDTO value)
         {
-            return "value";
+            try
+            {
+                var result = ctx.parts
+                    .Where(x => x.serialNumber == value.serialNumber)
+                    .Select(x => new partsGetDTO
+                    {
+                        name = x.name,
+                        serialNumber = x.serialNumber
+                    })
+                    .FirstOrDefault();
+
+                if (result == null) return NotFound();
+                return Ok(result);
+
+
+            }
+            catch (Exception ex) {
+
+                return BadRequest();
+            
+            }
         }
 
         // POST api/<partsController>
@@ -87,10 +138,74 @@ namespace Sertec.Controllers
 
         }
 
-        // DELETE api/<partsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id,[FromBody] partsPostDTO value)
         {
+
+            try
+            {
+                var result = ctx.parts
+                    .Where(x => x.pid == id)
+                    .FirstOrDefault();
+
+                if (result != null)
+                {
+
+                    if(value.serialNumber!=null) result.serialNumber=value.serialNumber;
+                    if (value.name != null) result.name = value.name;
+
+                    ctx.SaveChanges();
+
+                    return Ok();
+
+
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex) {
+
+                return BadRequest(ex.Message);
+            
+            }
+
+        }
+
+
+        // DELETE api/<partsController>/5
+        [HttpDelete]
+        public IActionResult Delete([FromBody] partsFilterDTO value)
+        {
+
+            try
+            {
+                var result = ctx.parts
+                .Where(x => x.serialNumber == value.serialNumber)
+                .FirstOrDefault();
+
+                if (result != null)
+                {
+                    ctx.parts.Remove(result);
+
+                    ctx.SaveChanges();
+
+                    return Ok();
+
+                }
+
+                return NotFound();
+
+            }
+            catch (Exception ex) {
+
+                return BadRequest(ex.Message);
+            }
+
+
+
+
+
+
         }
     }
 }
