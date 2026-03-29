@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Sertec.Data;
 using Sertec.Models;
 using System.Reflection.PortableExecutable;
@@ -11,6 +12,7 @@ namespace Sertec.Controllers
     public class machinePostDTO
     {
         public int machineId { get; set; }
+        public string machineName { get; set; }
     }
 
     [Route("api/[controller]")]
@@ -85,7 +87,8 @@ namespace Sertec.Controllers
 
                 ctx.machines.Add(new Machines
                 {
-                    machineId = value.machineId
+                    machineId = value.machineId,
+                    name=value.machineName
                 });
 
                 ctx.SaveChanges();

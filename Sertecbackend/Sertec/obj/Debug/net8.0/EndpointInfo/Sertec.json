@@ -270,33 +270,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -328,47 +302,69 @@
             "description": "OK"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "parts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsFilterDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsFilterDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsFilterDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
-    "/api/parts/{id}": {
+    "/api/parts/Filter": {
       "get": {
         "tags": [
           "parts"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsFilterDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsFilterDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsFilterDTO"
               }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
         }
-      },
+      }
+    },
+    "/api/parts/{id}": {
       "put": {
         "tags": [
           "parts"
@@ -409,7 +405,7 @@
           }
         }
       },
-      "delete": {
+      "patch": {
         "tags": [
           "parts"
         ],
@@ -424,6 +420,25 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsPostDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsPostDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/partsPostDTO"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -757,17 +772,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/rolesPostDTO"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/rolesPostDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/rolesPostDTO"
               }
             }
           }
@@ -1488,6 +1503,20 @@
           "machineId": {
             "type": "integer",
             "format": "int32"
+          },
+          "machineName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "partsFilterDTO": {
+        "type": "object",
+        "properties": {
+          "serialNumber": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1524,6 +1553,10 @@
           "frequency": {
             "type": "integer",
             "format": "int32"
+          },
+          "requireExplanation": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1546,6 +1579,10 @@
           "frequency": {
             "type": "integer",
             "format": "int32"
+          },
+          "requireExplanation": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1558,12 +1595,26 @@
             "format": "int32"
           },
           "report": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int32"
           },
           "userId": {
             "type": "integer",
             "format": "int32"
+          },
+          "explanation": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "rolesPostDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1626,6 +1677,10 @@
           "email": {
             "type": "string",
             "nullable": true
+          },
+          "displayName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1650,6 +1705,10 @@
             "nullable": true
           },
           "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "displayName": {
             "type": "string",
             "nullable": true
           }

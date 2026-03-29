@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sertec")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6d18374af6a4a0a7ffe0d7f38fc430067e460cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16a17b8bdeb2f3adad6501ed726b7bf630fdea0c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sertec")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sertec")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

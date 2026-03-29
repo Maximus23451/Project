@@ -18,6 +18,7 @@ namespace Sertec.Models
         public string? rfid { get; set; }
 
         public DateTime? LastPwChange { get; set; }
+        public string displayName { get; set; }
 
         [ForeignKey("RoleId")]
         public int roleid { get; set; }

@@ -177,17 +177,7 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Sertec.Controllers.partsController",
@@ -207,29 +197,19 @@
   },
   {
     "ContainingType": "Sertec.Controllers.partsController",
-    "Method": "Get",
-    "RelativePath": "api/parts/{id}",
-    "HttpMethod": "GET",
+    "Method": "Delete",
+    "RelativePath": "api/parts",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "value",
+        "Type": "Sertec.Controllers.partsFilterDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Sertec.Controllers.partsController",
@@ -260,9 +240,9 @@
   },
   {
     "ContainingType": "Sertec.Controllers.partsController",
-    "Method": "Delete",
+    "Method": "Patch",
     "RelativePath": "api/parts/{id}",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -270,15 +250,30 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "value",
+        "Type": "Sertec.Controllers.partsPostDTO",
+        "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sertec.Controllers.partsController",
+    "Method": "Get",
+    "RelativePath": "api/parts/Filter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
+        "Name": "value",
+        "Type": "Sertec.Controllers.partsFilterDTO",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Sertec.Controllers.QuestionsController",
@@ -507,17 +502,11 @@
     "Parameters": [
       {
         "Name": "value",
-        "Type": "System.String",
+        "Type": "Sertec.Controllers.rolesPostDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Sertec.Controllers.rolesController",

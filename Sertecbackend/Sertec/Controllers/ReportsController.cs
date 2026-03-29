@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Sertec.Data;
 using Sertec.Models;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,9 +14,9 @@ namespace Sertec.Controllers
         public int reportId { get; set; }
         public string question { get; set; }
         public string report { get; set; }
-
         public DateTime created { get; set; }
         public string user { get; set; }
+        public string explanation { get; set; }
 
     }
 
@@ -24,6 +25,7 @@ namespace Sertec.Controllers
         public string report { get; set; }
         public DateTime created { get; set; }
         public string user { get; set; }
+        public string explanation { get; set; }
 
     }
 
@@ -31,8 +33,9 @@ namespace Sertec.Controllers
     public class reportPostDTO
     {
         public int questionId { get; set; }
-        public string report { get; set; }
+        public short report { get; set; }
         public int userId { get; set; }
+        public string explanation { get; set; }
     }
 
 
@@ -58,13 +61,24 @@ namespace Sertec.Controllers
             try
             {
                 var result = ctx.reports
+                .Include(x=>x.users)
+                .Include(x=>x.questions)
+                .AsEnumerable()
                 .Select(x => new reportGetDTO
                 {
                     reportId = x.reportId,
                     question = x.questions.question,
-                    report = x.report,
+                    report = x.report switch
+                    {
+                        0 => "No",
+                        1 => "Yes",
+                        2 => "Both",
+                        3 => "Not needed",
+                        _ => "Unknown"
+                    },
                     created = x.reportCreated,
-                    user = x.users.Username
+                    user = x.users.Username,
+                    explanation = x.explanation
 
 
                 })
@@ -89,12 +103,23 @@ namespace Sertec.Controllers
             {
 
                 var result = ctx.reports
+                .Include(x => x.users)
+                .Include(x => x.questions)
+                .AsEnumerable()
                .Where(x => x.qId == id)
                .Select(x => new reportFilteredDTO
                {
-                   report = x.report,
+                   report = x.report switch
+                   {
+                       0 => "No",
+                       1 => "Yes",
+                       2 => "Both",
+                       3 => "Not needed",
+                       _ => "Unknown"
+                   },
                    created = x.reportCreated,
-                   user = x.users.Username
+                   user = x.users.Username,
+                   explanation = x.explanation
 
 
                })
@@ -127,7 +152,8 @@ namespace Sertec.Controllers
                     qId = value.questionId,
                     report = value.report,
                     uId = value.userId,
-                    reportCreated = DateTime.Now
+                    reportCreated = DateTime.Now,
+                    explanation= value.explanation
                 });
 
 

@@ -15,6 +15,8 @@ namespace Sertec.Controllers
         public string email { get; set; }
         public int roleid { get; set; }
         public DateTime? lastPwChange { get; set; }
+        public string displayName { get; set; }
+
     }
 
     public class userPostDTO
@@ -24,6 +26,7 @@ namespace Sertec.Controllers
         public string role { get; set; }
         public string? rfid { get; set; }
         public string email { get; set; }
+        public string displayName { get; set; }
     }
 
 
@@ -33,6 +36,7 @@ namespace Sertec.Controllers
         public string? password { get; set; }
         public string? role { get; set; }
         public string? email { get; set; }
+        public string? displayName { get; set; }
     }
 
     [Route("api/[controller]")]
@@ -59,7 +63,8 @@ namespace Sertec.Controllers
                     name = x.Username,
                     email = x.Email,
                     roleid = x.roleid,
-                    lastPwChange = x.LastPwChange
+                    lastPwChange = x.LastPwChange,
+                    displayName = x.displayName
                 });
 
 
@@ -108,7 +113,8 @@ namespace Sertec.Controllers
                         Email = value.email,
                         rfid = value.rfid,
                         roleid = role.Rid,
-                        LastPwChange = DateTime.Today
+                        LastPwChange = DateTime.Today,
+                        displayName = value.displayName
 
                     });
 
@@ -171,6 +177,11 @@ namespace Sertec.Controllers
 
                         user.roleid = r;
 
+                    }
+
+                    if (value.displayName != null)
+                    {
+                        user.displayName= value.displayName;
                     }
                     ctx.SaveChanges();
 

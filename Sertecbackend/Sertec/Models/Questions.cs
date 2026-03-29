@@ -18,6 +18,7 @@ namespace Sertec.Models
 
         public int frequency { get; set; }
 
+        public short requireExplanation { get; set; }
 
         public virtual Parts parts { get; set; }
 

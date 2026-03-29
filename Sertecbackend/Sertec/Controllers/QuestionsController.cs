@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Sertec.Data;
 using Sertec.Models;
 using System.Net;
@@ -14,6 +15,8 @@ namespace Sertec.Controllers
         public string serialNumber { get; set; }
         public string role { get; set; }
         public int frequency { get; set; }
+        public short requireExplanation { get; set; }
+
     }
     public class questionGetDTO
     {
@@ -21,6 +24,7 @@ namespace Sertec.Controllers
         public string role { get; set; }
         public string part { get; set; }
         public int frequency { get; set; }
+        public string requireExplanation { get; set; }
     }
 
     public class questionPatchDTO
@@ -29,6 +33,7 @@ namespace Sertec.Controllers
         public int partId { get; set; }
         public string role { get; set; }
         public int frequency { get; set; }
+        public short requireExplanation { get; set; }
     }
 
 
@@ -51,12 +56,24 @@ namespace Sertec.Controllers
             try
             {
                 var questions = ctx.questions
+                .Include(x=>x.roles)
+                .Include(x=>x.parts)
+                .AsEnumerable()
                 .Select(x => new questionGetDTO
                 {
                     question = x.question,
                     role = x.roles.Name,
                     part = x.parts.name,
-                    frequency = x.frequency
+                    frequency = x.frequency,
+                    requireExplanation = x.requireExplanation switch
+                    {
+                        0 => "No",
+                        1 => "Yes",
+                        2 => "Both",
+                        3 => "Not needed",
+                        _ => "Unknown"
+                    }
+
                 })
                 .ToList();
 
@@ -97,7 +114,8 @@ namespace Sertec.Controllers
                     question = value.question,
                     partsId = part,
                     roleId = role,
-                    frequency = value.frequency
+                    frequency = value.frequency,
+                    requireExplanation=value.requireExplanation
                 });
 
                 ctx.SaveChanges();
@@ -138,6 +156,10 @@ namespace Sertec.Controllers
 
                         question.roleId = role;
 
+                    }
+                    if (value.requireExplanation != null)
+                    {
+                        question.requireExplanation = value.requireExplanation;
                     }
                 }
 

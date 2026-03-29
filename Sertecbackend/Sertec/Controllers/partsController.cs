@@ -66,7 +66,7 @@ namespace Sertec.Controllers
         }
 
         // GET api/<partsController>/5
-        [HttpGet]
+        [HttpGet("/api/parts/Filter")]
         public IActionResult Get([FromBody] partsFilterDTO value)
         {
             try

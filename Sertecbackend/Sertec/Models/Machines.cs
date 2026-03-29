@@ -6,7 +6,7 @@ namespace Sertec.Models
     {
         [Key]
         public int machineId { get; set; }
-
+        public string name { get; set; }
 
     }
 }
