@@ -1203,45 +1203,38 @@
         }
       }
     },
-    "/api/users/{id}": {
-      "get": {
+    "/api/users/login": {
+      "post": {
         "tags": [
           "users"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userLogin"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userLogin"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/userLogin"
               }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
         }
-      },
+      }
+    },
+    "/api/users/{id}": {
       "put": {
         "tags": [
           "users"
@@ -1655,6 +1648,24 @@
           "unPlanned": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "userLogin": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "rfid": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -39,6 +39,14 @@ namespace Sertec.Controllers
         public string? displayName { get; set; }
     }
 
+    public class userLogin
+    {
+        public string? userName { get; set; }
+        public string? password { get; set; }
+        public string? rfid { get; set; }
+
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class usersController : ControllerBase
@@ -78,10 +86,46 @@ namespace Sertec.Controllers
         }
 
         // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [Route("/api/users/login")]
+        [HttpPost]
+        public IActionResult Post([FromBody] userLogin value)
         {
-            return "value";
+
+            try
+            {
+                if (value.userName != null)
+                {
+
+                    var user = ctx.users
+                        .Where(x => x.Username == value.userName)
+                        .FirstOrDefault();
+
+                    var pw = PasswordManager.VerifyPasswordHash(value.password, user.PasswordHash, user.PasswordSalt);
+
+                    if (pw) return Ok(user);
+                    else return Unauthorized("Invalid password");
+
+                }
+
+                if (value.rfid != null)
+                {
+
+                    var user = ctx.users
+                        .Where(x => x.rfid == value.rfid && x.Username == value.userName)
+                        .FirstOrDefault();
+
+                    if (user != null) return Ok(user);
+                    else return Unauthorized("Invalid password");
+
+
+                }
+
+                return BadRequest("Username or rfid must be provided");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // POST api/<ValuesController>
@@ -127,11 +171,6 @@ namespace Sertec.Controllers
             {
                 return BadRequest(ex.Message);
             }
-
-            
-
-
-
 
         }
 

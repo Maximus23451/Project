@@ -803,32 +803,6 @@
   },
   {
     "ContainingType": "Sertec.Controllers.usersController",
-    "Method": "Get",
-    "RelativePath": "api/users/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Sertec.Controllers.usersController",
     "Method": "Put",
     "RelativePath": "api/users/{id}",
     "HttpMethod": "PUT",
@@ -901,6 +875,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Sertec.Controllers.usersController",
+    "Method": "Post",
+    "RelativePath": "api/users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "value",
+        "Type": "Sertec.Controllers.userLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Sertec.Controllers.UserShiftsController",
