@@ -47,6 +47,15 @@ namespace Sertec.Controllers
 
     }
 
+
+    public class userLoginReturn
+    {
+        public string? userName { get; set; }
+        public string? displayName { get; set; }
+        public string? role { get; set; }
+
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class usersController : ControllerBase
@@ -102,7 +111,17 @@ namespace Sertec.Controllers
 
                     var pw = PasswordManager.VerifyPasswordHash(value.password, user.PasswordHash, user.PasswordSalt);
 
-                    if (pw) return Ok(user);
+                    var userReturn=ctx.users
+                        .Where(x => x.Username == value.userName)
+                        .Select(x => new userLoginReturn
+                        {
+                            userName = x.Username,
+                            displayName = x.displayName,
+                            role = ctx.roles.Where(r => r.Rid == x.roleid).Select(r => r.Name).FirstOrDefault()
+                        })
+                        .FirstOrDefault();
+
+                    if (pw) return Ok(userReturn);
                     else return Unauthorized("Invalid password");
 
                 }

@@ -68,6 +68,8 @@ namespace Sertec.Controllers
                         Name = value.name
                     });
 
+                    ctx.SaveChanges();
+
                     return Created();
 
                 }
