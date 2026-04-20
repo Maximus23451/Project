@@ -19,6 +19,15 @@ namespace Sertec.Controllers
 
     }
 
+    public class userGetByRoleDTO
+    {
+        public int id { get; set; }
+        public string role { get; set; }
+
+        public string rfid { get; set; }
+        public string displayName { get; set; }
+    }
+
     public class userPostDTO
     {
         public string username { get; set; }
@@ -94,6 +103,31 @@ namespace Sertec.Controllers
             
         }
 
+        [Route("/api/users/roleFilter")]
+        [HttpGet]
+        public IActionResult GetByRole(int roleid)
+        {
+            try
+            {
+                var result = ctx.users
+                .Select(x => new userGetByRoleDTO
+                {
+                    id = x.uid,
+                    role = ctx.roles.Where(r => r.Rid == x.roleid).Select(r => r.Name).FirstOrDefault(),
+                    rfid = x.rfid,
+                    displayName = x.displayName
+                })
+                .GroupBy(x=>x.role)
+                .ToList();
+                
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NoContent();
+            }
+        }
         // GET api/<ValuesController>/5
         [Route("/api/users/login")]
         [HttpPost]
@@ -102,40 +136,56 @@ namespace Sertec.Controllers
 
             try
             {
-                if (value.userName != null)
-                {
 
-                    var user = ctx.users
-                        .Where(x => x.Username == value.userName)
-                        .FirstOrDefault();
-
-                    var pw = PasswordManager.VerifyPasswordHash(value.password, user.PasswordHash, user.PasswordSalt);
-
-                    var userReturn=ctx.users
-                        .Where(x => x.Username == value.userName)
-                        .Select(x => new userLoginReturn
-                        {
-                            userName = x.Username,
-                            displayName = x.displayName,
-                            role = ctx.roles.Where(r => r.Rid == x.roleid).Select(r => r.Name).FirstOrDefault()
-                        })
-                        .FirstOrDefault();
-
-                    if (pw) return Ok(userReturn);
-                    else return Unauthorized("Invalid password");
-
-                }
 
                 if (value.rfid != null)
                 {
 
                     var user = ctx.users
-                        .Where(x => x.rfid == value.rfid && x.Username == value.userName)
+                        .Where(x => x.rfid == value.rfid)
+                        .Select(x => new userLoginReturn
+                        {
+                            userName = x.Username,
+                            displayName = x.displayName,
+                            role = ctx.roles.Where(r => r.Rid == x.roleid).Select(r => r.Name).FirstOrDefault()
+                                                })
                         .FirstOrDefault();
 
                     if (user != null) return Ok(user);
                     else return Unauthorized("Invalid password");
 
+
+                }
+
+                else if (value.userName != null)
+                {
+                    try
+                    {
+                        var user = ctx.users
+                       .Where(x => x.Username == value.userName)
+                       .FirstOrDefault();
+
+                        var pw = PasswordManager.VerifyPasswordHash(value.password, user.PasswordHash, user.PasswordSalt);
+
+                        var userReturn = ctx.users
+                            .Where(x => x.Username == value.userName)
+                            .Select(x => new userLoginReturn
+                            {
+                                userName = x.Username,
+                                displayName = x.displayName,
+                                role = ctx.roles.Where(r => r.Rid == x.roleid).Select(r => r.Name).FirstOrDefault()
+                            })
+                            .FirstOrDefault();
+
+                        if (pw) return Ok(userReturn);
+                        else return Unauthorized("Invalid password");
+                    }
+                    catch (Exception ex)
+                    {
+                        return BadRequest(ex.Message);
+                    }
+                   
+                   
 
                 }
 
@@ -225,6 +275,17 @@ namespace Sertec.Controllers
                         user.PasswordHash = passwordHash;
                         user.PasswordSalt = passwordSalt;
                         user.LastPwChange = DateTime.Today;
+
+                        var req=ctx.PasswordRequests
+                            .Where(x => x.userId == user.uid)
+                            .FirstOrDefault();
+
+                        if (req != null)
+                        {
+                            ctx.PasswordRequests.Remove(req);
+                            ctx.SaveChanges();
+                        }
+
                     }
                     if (value.role != null)
                     {
@@ -257,14 +318,34 @@ namespace Sertec.Controllers
         }
 
         // DELETE api/<ValuesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public IActionResult Delete(string username)
         {
 
+            try
+            {
+                var user = ctx.users
+                    .Where(x => x.Username == username)
+                    .FirstOrDefault();
 
 
+                if (user != null)
+                {
+                    ctx.users.Remove(user);
+                    ctx.SaveChanges();
 
+                    return Ok("User deleted");
+                }
 
+                return NotFound("User not found");
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+
+            }
         }
     }
 }

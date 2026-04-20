@@ -276,6 +276,107 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Sertec.Controllers.PasswordRequestController",
+    "Method": "Get",
+    "RelativePath": "api/PasswordRequest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sertec.Controllers.PasswordRequestController",
+    "Method": "Post",
+    "RelativePath": "api/PasswordRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "value",
+        "Type": "Sertec.Controllers.PasswordRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sertec.Controllers.PasswordRequestController",
+    "Method": "Get",
+    "RelativePath": "api/PasswordRequest/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Sertec.Controllers.PasswordRequestController",
+    "Method": "Put",
+    "RelativePath": "api/PasswordRequest/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "value",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Sertec.Controllers.PasswordRequestController",
+    "Method": "Delete",
+    "RelativePath": "api/PasswordRequest/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Sertec.Controllers.QuestionsController",
     "Method": "Get",
     "RelativePath": "api/Questions",
@@ -803,6 +904,22 @@
   },
   {
     "ContainingType": "Sertec.Controllers.usersController",
+    "Method": "Delete",
+    "RelativePath": "api/users",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sertec.Controllers.usersController",
     "Method": "Put",
     "RelativePath": "api/users/{id}",
     "HttpMethod": "PUT",
@@ -856,28 +973,6 @@
   },
   {
     "ContainingType": "Sertec.Controllers.usersController",
-    "Method": "Delete",
-    "RelativePath": "api/users/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Sertec.Controllers.usersController",
     "Method": "Post",
     "RelativePath": "api/users/login",
     "HttpMethod": "POST",
@@ -888,6 +983,22 @@
         "Name": "value",
         "Type": "Sertec.Controllers.userLogin",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Sertec.Controllers.usersController",
+    "Method": "GetByRole",
+    "RelativePath": "api/users/roleFilter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleid",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

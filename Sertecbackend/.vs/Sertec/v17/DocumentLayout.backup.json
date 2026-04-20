@@ -7,6 +7,26 @@
       "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\controllers\\passwordrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\controllers\\passwordrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\models\\machines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\machines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\models\\passwordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\passwordrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\models\\parts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\parts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\controllers\\machinescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\controllers\\machinescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\models\\machines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\machines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\questions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\controllers\\shiftscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\controllers\\shiftscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -91,10 +103,6 @@
       "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\models\\parts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\parts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|c:\\users\\asus\\documents\\github\\project\\sertecbackend\\sertec\\models\\machineparts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62746720-524B-4977-A4BA-2C82F45D91C5}|Sertec\\Sertec.csproj|solutionrelative:sertec\\models\\machineparts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -106,31 +114,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Reports.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Reports.cs",
-              "RelativeDocumentMoniker": "Sertec\\Models\\Reports.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Reports.cs",
-              "RelativeToolTip": "Sertec\\Models\\Reports.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PasswordRequestController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\PasswordRequestController.cs",
+              "RelativeDocumentMoniker": "Sertec\\Controllers\\PasswordRequestController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\PasswordRequestController.cs",
+              "RelativeToolTip": "Sertec\\Controllers\\PasswordRequestController.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAswEYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:02:18.725Z"
+              "WhenOpened": "2026-04-20T18:56:02.249Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
+              "Title": "PasswordRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\PasswordRequest.cs",
+              "RelativeDocumentMoniker": "Sertec\\Models\\PasswordRequest.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\PasswordRequest.cs",
+              "RelativeToolTip": "Sertec\\Models\\PasswordRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T18:51:49.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Machines.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Machines.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\Machines.cs",
               "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Machines.cs",
               "RelativeToolTip": "Sertec\\Models\\Machines.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:02:15.042Z"
+              "WhenOpened": "2026-03-18T12:02:15.042Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -140,27 +163,14 @@
               "RelativeDocumentMoniker": "Sertec\\Controllers\\usersController.cs",
               "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\usersController.cs",
               "RelativeToolTip": "Sertec\\Controllers\\usersController.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAIwHwAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAoBAAAAAAAAAADgvx0BAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T13:13:40.224Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\appsettings.json",
-              "RelativeDocumentMoniker": "Sertec\\appsettings.json",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\appsettings.json",
-              "RelativeToolTip": "Sertec\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-20T11:33:24.016Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "rolesController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\rolesController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\rolesController.cs",
@@ -168,12 +178,11 @@
               "RelativeToolTip": "Sertec\\Controllers\\rolesController.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwEYAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:10:57.446Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-18T12:10:57.446Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "ShiftPartsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\ShiftPartsController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\ShiftPartsController.cs",
@@ -185,7 +194,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "Appdbcontext.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Data\\Appdbcontext.cs",
+              "RelativeDocumentMoniker": "Sertec\\Data\\Appdbcontext.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Data\\Appdbcontext.cs",
+              "RelativeToolTip": "Sertec\\Data\\Appdbcontext.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA4wC0AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T12:23:14.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\appsettings.json",
+              "RelativeDocumentMoniker": "Sertec\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\appsettings.json",
+              "RelativeToolTip": "Sertec\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-20T11:33:24.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Program.cs",
               "RelativeDocumentMoniker": "Sertec\\Program.cs",
@@ -193,12 +227,36 @@
               "RelativeToolTip": "Sertec\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T12:46:17.729Z",
+              "WhenOpened": "2026-04-20T12:46:17.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Parts.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Parts.cs",
+              "RelativeDocumentMoniker": "Sertec\\Models\\Parts.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Parts.cs",
+              "RelativeToolTip": "Sertec\\Models\\Parts.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T13:54:37.378Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
+              "Title": "Reports.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Reports.cs",
+              "RelativeDocumentMoniker": "Sertec\\Models\\Reports.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Reports.cs",
+              "RelativeToolTip": "Sertec\\Models\\Reports.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T12:02:18.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Users.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Users.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\Users.cs",
@@ -211,7 +269,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "UserShiftsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\UserShiftsController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\UserShiftsController.cs",
@@ -223,7 +281,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "MachinesController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\MachinesController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\MachinesController.cs",
@@ -235,7 +293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "PasswordManager.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\UserManager\\PasswordManager.cs",
               "RelativeDocumentMoniker": "Sertec\\UserManager\\PasswordManager.cs",
@@ -247,7 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Questions.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Questions.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\Questions.cs",
@@ -259,7 +317,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "ReportsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\ReportsController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\ReportsController.cs",
@@ -271,7 +329,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "QuestionsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\QuestionsController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\QuestionsController.cs",
@@ -283,7 +341,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "partsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\partsController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\partsController.cs",
@@ -295,19 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Appdbcontext.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Data\\Appdbcontext.cs",
-              "RelativeDocumentMoniker": "Sertec\\Data\\Appdbcontext.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Data\\Appdbcontext.cs",
-              "RelativeToolTip": "Sertec\\Data\\Appdbcontext.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAiwBsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:23:14.426Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "ShiftsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\ShiftsController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\ShiftsController.cs",
@@ -319,7 +365,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "machinePartsController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Controllers\\machinePartsController.cs",
               "RelativeDocumentMoniker": "Sertec\\Controllers\\machinePartsController.cs",
@@ -331,7 +377,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "UserShifts.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\UserShifts.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\UserShifts.cs",
@@ -343,7 +389,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "ShiftParts.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\ShiftParts.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\ShiftParts.cs",
@@ -355,7 +401,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "Shift.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Shift.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\Shift.cs",
@@ -367,7 +413,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "Roles.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Roles.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\Roles.cs",
@@ -379,19 +425,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Parts.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Parts.cs",
-              "RelativeDocumentMoniker": "Sertec\\Models\\Parts.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\Parts.cs",
-              "RelativeToolTip": "Sertec\\Models\\Parts.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T13:54:37.378Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "MachineParts.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\Documents\\GitHub\\Project\\Sertecbackend\\Sertec\\Models\\MachineParts.cs",
               "RelativeDocumentMoniker": "Sertec\\Models\\MachineParts.cs",

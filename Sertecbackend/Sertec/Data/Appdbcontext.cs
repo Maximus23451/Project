@@ -18,6 +18,8 @@ namespace Sertec.Data
         public DbSet<ShiftParts> shiftParts { get; set; }
         public DbSet<UserShifts> userShifts { get; set; }
 
+        public DbSet<PasswordRequest> PasswordRequests { get; set; }
+
         public Appdbcontext(DbContextOptions<Appdbcontext> options) : base(options)
         {
         }
@@ -40,7 +42,8 @@ namespace Sertec.Data
 
             modelBuilder.Entity<UserShifts>()
                 .HasKey(us => new { us.userId, us.shiftId });
-
+            modelBuilder.Entity<PasswordRequest>()
+                .HasKey(pr => new {pr.userId, pr.requestedAt});
         }
     }
 }
