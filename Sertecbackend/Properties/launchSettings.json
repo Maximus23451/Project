@@ -1,0 +1,40 @@
+{
+  "profiles": {
+    "SertecDashboard.Api": {
+      "commandName": "Project"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning",
+      "Microsoft.EntityFrameworkCore.Database.Command": "Warning"
+    }
+  },
+  "Smtp": {
+    "Host": "",
+    "Port": 587,
+    "User": "",
+    "Pass": "",
+    "From": "sertec@gyar.hu"
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=SertecDashboard;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "AllowedOrigins": "http://localhost:5173",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:2924/",
+      "sslPort": 44323
+    }
+  }
+}

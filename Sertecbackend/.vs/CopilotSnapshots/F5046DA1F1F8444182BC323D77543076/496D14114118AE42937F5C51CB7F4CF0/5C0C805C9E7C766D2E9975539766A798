@@ -1,0 +1,118 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SertecDashboard.Api.Data;
+using SertecDashboard.Api.Services;
+using System.Text.Json;
+
+namespace SertecDashboard.Api.Controllers;
+
+/// <summary>
+/// SSE (Server-Sent Events) streaming endpoint.
+/// GET /api/stream
+///
+/// The client (React frontend) opens one long-lived HTTP connection here.
+/// On connect it immediately receives an "init" event containing the full
+/// current application state.  Subsequent events are pushed by SseService
+/// whenever any data changes (question dispatched, response submitted, etc.).
+///
+/// The connection is kept alive with a ": ping" comment every 25 seconds to
+/// prevent proxy/firewall timeouts.
+///
+/// IIS / SmarterASP.NET note:
+///   HTTP compression for this path is disabled in web.config so that IIS
+///   does not buffer the response stream and SSE events arrive instantly.
+/// </summary>
+[ApiController]
+[Route("api")]
+public class StreamController : ControllerBase
+{
+    private readonly AppDbContext _db;
+    private readonly SseService   _sse;
+
+    private static readonly JsonSerializerOptions _json = new()
+    {
+        PropertyNamingPolicy   = JsonNamingPolicy.CamelCase,
+        DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+    };
+
+    public StreamController(AppDbContext db, SseService sse)
+    {
+        _db  = db;
+        _sse = sse;
+    }
+
+    // GET /api/stream
+    [HttpGet("stream")]
+    public async Task Stream(CancellationToken ct)
+    {
+        // ── Set SSE response headers ──────────────────────────────────────
+        Response.Headers["Content-Type"]  = "text/event-stream";
+        Response.Headers["Cache-Control"] = "no-cache";
+        Response.Headers["Connection"]    = "keep-alive";
+        Response.Headers["X-Accel-Buffering"] = "no"; // disable nginx buffering if present
+        await Response.Body.FlushAsync(ct);
+
+        // ── Register this client in SseService ────────────────────────────
+        var (clientId, reader) = _sse.AddClient();
+
+        try
+        {
+            // ── Send initial state snapshot ───────────────────────────────
+            var pending = await _db.PendingItems.ToListAsync(ct);
+            var init = new
+            {
+                questions      = await _db.Questions.ToListAsync(ct),
+                responses      = await _db.Responses.ToListAsync(ct),
+                machines       = await BuildMachineListAsync(ct),
+                docs           = await _db.Documents
+                                          .Select(d => new { d.Id, d.Name, d.Size, d.UploadedAt })
+                                          .ToListAsync(ct),
+                pending        = pending.LastOrDefault(),
+                pendingList    = pending,
+                pendingDoc     = (object?)null,   // persisted pendingDoc not implemented; null is safe
+                shifts         = await _db.Shifts.ToListAsync(ct),
+                alerts         = await _db.Alerts.ToListAsync(ct),
+                passwordResets = await _db.PasswordResets.ToListAsync(ct),
+            };
+
+            var initJson = JsonSerializer.Serialize(init, _json);
+            await WriteLineAsync($"event: init\ndata: {initJson}\n\n", ct);
+
+            // ── Stream events until client disconnects ────────────────────
+            await foreach (var msg in reader.ReadAllAsync(ct))
+            {
+                await WriteLineAsync(msg, ct);
+            }
+        }
+        finally
+        {
+            _sse.RemoveClient(clientId);
+        }
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────────────
+
+    /// <summary>Writes a raw SSE chunk and flushes immediately.</summary>
+    private async Task WriteLineAsync(string text, CancellationToken ct)
+    {
+        await Response.WriteAsync(text, ct);
+        await Response.Body.FlushAsync(ct);
+    }
+
+    /// <summary>
+    /// Builds the machine list in the format the React frontend expects:
+    /// { id, name, parts: string[] }
+    /// </summary>
+    private async Task<List<object>> BuildMachineListAsync(CancellationToken ct)
+    {
+        var machines = await _db.Machines.Include(m => m.MachineParts)
+            .ThenInclude(mp => mp.Part)
+            .ToListAsync(ct);
+        return machines.Select(m => (object)new
+        {
+            id    = m.Id,
+            name  = m.Name,
+            parts = m.MachineParts.Select(mp => mp.Part.Name).ToList(),
+        }).ToList();
+    }
+}

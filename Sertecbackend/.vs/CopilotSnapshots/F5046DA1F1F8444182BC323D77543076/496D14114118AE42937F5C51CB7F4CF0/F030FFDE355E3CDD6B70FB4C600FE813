@@ -1,0 +1,127 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SertecDashboard.Api.Data;
+using SertecDashboard.Api.Models;
+using SertecDashboard.Api.Services;
+
+namespace SertecDashboard.Api.Controllers;
+
+/// <summary>
+/// Manages production machines and their checklist parts.
+/// Used by the setter (gépbeállító) dashboard.
+///
+/// GET    /api/machines               — all machines with parts array
+/// POST   /api/machines               — create a machine
+/// POST   /api/machines/{id}/parts    — add a part to a machine
+/// DELETE /api/machines/{id}          — delete a machine (cascade deletes parts)
+/// </summary>
+[ApiController]
+[Route("api/machines")]
+public class MachinesController : ControllerBase
+{
+    private readonly AppDbContext _db;
+    private readonly SseService   _sse;
+
+    public MachinesController(AppDbContext db, SseService sse)
+    {
+        _db  = db;
+        _sse = sse;
+    }
+
+    // GET /api/machines
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var machines = await _db.Machines.Include(m => m.MachineParts)
+            .ThenInclude(mp => mp.Part)
+            .ToListAsync();
+        return Ok(machines.Select(ToDto));
+    }
+
+    // POST /api/machines
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreateMachineRequest body)
+    {
+        if (string.IsNullOrWhiteSpace(body.Name))
+            return BadRequest(new { error = "Name required" });
+
+        var machine = new Machine { 
+            Name = body.Name.Trim()
+        
+        };
+        _db.Machines.Add(machine);
+        await _db.SaveChangesAsync();
+
+        await BroadcastAsync();
+        return Ok(ToDto(machine));
+    }
+
+    // POST /api/machines/{id}/parts
+    [HttpPost("{id}/parts")]
+    public async Task<IActionResult> AddPart(int id, [FromBody] AddPartRequest body)
+    {
+        var machine = _db.Machines
+            .Where(x=>x.Id==id)
+            .FirstOrDefault();
+
+
+        if (machine == null) return NotFound(new { error = "Machine not found" });
+
+        var partName = body.Part?.Trim();
+
+        var part = _db.Parts
+            .Where(x => x.Name == body.Part)
+            .FirstOrDefault();
+
+        var machineparts=_db.MachineParts
+            .Where(x => x.MachineId == id && x.PartId == part.partId)
+            .FirstOrDefault();
+
+        if (!string.IsNullOrWhiteSpace(partName) && machineparts==null)
+        {
+            _db.MachineParts.Add(new MachinePart { MachineId = id, PartId = part.partId });
+            await _db.SaveChangesAsync();
+            await BroadcastAsync();
+        }
+
+        return Ok(ToDto(machine));
+    }
+
+    // DELETE /api/machines/{id}
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var machine = await _db.Machines.FindAsync(id);
+        if (machine != null)
+        {
+            _db.Machines.Remove(machine); // cascade deletes MachineParts via FK
+            await _db.SaveChangesAsync();
+        }
+
+        await BroadcastAsync();
+        return Ok(new { ok = true });
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────────────
+
+    /// <summary>Converts Machine entity to the JSON shape the frontend expects.</summary>
+    private static object ToDto(Machine m) => new
+    {
+        id    = m.Id,
+        name  = m.Name,
+        parts = m.MachineParts.Select(mp => mp.Part.Name).ToList(),
+    };
+
+    private async Task BroadcastAsync()
+    {
+        var machines = await _db.Machines.Include(m => m.Parts).ToListAsync();
+        _sse.Broadcast("machines", machines.Select(ToDto));
+    }
+
+    private static string NewId() =>
+        Convert.ToHexString(System.Security.Cryptography.RandomNumberGenerator.GetBytes(8))
+               .ToLowerInvariant();
+}
+
+public record CreateMachineRequest(string? Name);
+public record AddPartRequest(string? Part);

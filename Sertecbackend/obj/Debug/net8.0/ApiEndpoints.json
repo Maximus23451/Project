@@ -1,0 +1,682 @@
+[
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.StreamController",
+    "Method": "UpdateMachines",
+    "RelativePath": "api",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.AlertsController",
+    "Method": "GetAll",
+    "RelativePath": "api/alerts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.AlertsController",
+    "Method": "Create",
+    "RelativePath": "api/alerts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.CreateAlertRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.AlertsController",
+    "Method": "ClearAcknowledged",
+    "RelativePath": "api/alerts",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.AlertsController",
+    "Method": "Acknowledge",
+    "RelativePath": "api/alerts/{id}/ack",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "GetDocs",
+    "RelativePath": "api/docs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "Upload",
+    "RelativePath": "api/docs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.UploadDocRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "DeleteAllDocs",
+    "RelativePath": "api/docs",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "GetDoc",
+    "RelativePath": "api/docs/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "DeleteDoc",
+    "RelativePath": "api/docs/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.MachinesController",
+    "Method": "GetAll",
+    "RelativePath": "api/machines",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.MachinesController",
+    "Method": "Create",
+    "RelativePath": "api/machines",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.CreateMachineRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.MachinesController",
+    "Method": "Delete",
+    "RelativePath": "api/machines/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.MachinesController",
+    "Method": "AddPart",
+    "RelativePath": "api/machines/{id}/parts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.AddPartRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.MachinesController",
+    "Method": "RemovePart",
+    "RelativePath": "api/machines/{id}/parts/{serialNumber}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "serialNumber",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PartsController",
+    "Method": "Get",
+    "RelativePath": "api/Parts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PartsController",
+    "Method": "Post",
+    "RelativePath": "api/Parts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "value",
+        "Type": "SertecDashboard.Api.Controllers.partPostDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PartsController",
+    "Method": "Get",
+    "RelativePath": "api/Parts/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PartsController",
+    "Method": "Put",
+    "RelativePath": "api/Parts/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "value",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PartsController",
+    "Method": "Delete",
+    "RelativePath": "api/Parts/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PasswordResetsController",
+    "Method": "Submit",
+    "RelativePath": "api/password-reset",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.PasswordResetRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PasswordResetsController",
+    "Method": "GetAll",
+    "RelativePath": "api/password-resets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PasswordResetsController",
+    "Method": "Handle",
+    "RelativePath": "api/password-resets/{id}/handle",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.HandleResetRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PendingController",
+    "Method": "GetAll",
+    "RelativePath": "api/pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PendingController",
+    "Method": "Dispatch",
+    "RelativePath": "api/pending",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.DispatchRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PendingController",
+    "Method": "ClearAll",
+    "RelativePath": "api/pending",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "GetPendingDoc",
+    "RelativePath": "api/pending-doc",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "SetPendingDoc",
+    "RelativePath": "api/pending-doc",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.SetPendingDocRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.DocumentsController",
+    "Method": "ClearPendingDoc",
+    "RelativePath": "api/pending-doc",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.PendingController",
+    "Method": "DeleteOne",
+    "RelativePath": "api/pending/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.QuestionsController",
+    "Method": "GetAll",
+    "RelativePath": "api/questions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.QuestionsController",
+    "Method": "Create",
+    "RelativePath": "api/questions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.QuestionBody",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.QuestionsController",
+    "Method": "Update",
+    "RelativePath": "api/questions/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.QuestionBody",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.QuestionsController",
+    "Method": "Delete",
+    "RelativePath": "api/questions/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.ResponsesController",
+    "Method": "GetAll",
+    "RelativePath": "api/responses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.ResponsesController",
+    "Method": "Submit",
+    "RelativePath": "api/responses",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.SubmitResponseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.ResponsesController",
+    "Method": "ClearAll",
+    "RelativePath": "api/responses",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.ShiftsController",
+    "Method": "GetAll",
+    "RelativePath": "api/shifts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.ShiftsController",
+    "Method": "EndShift",
+    "RelativePath": "api/shifts/end",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.EndShiftRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.StatsController",
+    "Method": "GetStats",
+    "RelativePath": "api/stats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.StreamController",
+    "Method": "Stream",
+    "RelativePath": "api/stream",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.UsersController",
+    "Method": "GetAll",
+    "RelativePath": "api/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.UsersController",
+    "Method": "Create",
+    "RelativePath": "api/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.CreateUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.UsersController",
+    "Method": "Update",
+    "RelativePath": "api/users/{username}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "SertecDashboard.Api.Controllers.UpdateUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.UsersController",
+    "Method": "Delete",
+    "RelativePath": "api/users/{username}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SertecDashboard.Api.Controllers.UsersController",
+    "Method": "GetRFID_Users",
+    "RelativePath": "api/users/rfid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,138 @@
+﻿// Program.cs — ASP.NET Core 8 entry point for the Sertec Dashboard API.
+//
+// This file wires up:
+//   • MS SQL Server via Entity Framework Core (Somee.com provides MS SQL Express)
+//   • CORS locked to the configured frontend origin
+//   • Rate limiting on the login endpoint (brute-force protection)
+//   • SSE broadcast service (singleton)
+//   • Automated question dispatch background service
+//   • React SPA static file serving from wwwroot/
+//
+// Deployment checklist (Somee.com):
+//   1.  cd sertec-react && npm run build
+//   2.  Copy sertec-react/dist/* → SertecDashboard.Api/wwwroot/
+//   3.  Fill in appsettings.Production.json (connection string + AllowedOrigins)
+//   4.  dotnet publish -c Release -o ./publish
+//   5.  Upload ./publish to Somee.com via FTP
+
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
+using SertecDashboard.Api.Data;
+using SertecDashboard.Api.Services;
+using System.Threading.RateLimiting;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// ── Database (MS SQL Server — Somee.com provides MS SQL 2022 Express) ────────
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// ── MVC Controllers ───────────────────────────────────────────────────────
+builder.Services.AddControllers()
+    .AddJsonOptions(opts =>
+    {
+        opts.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+        opts.JsonSerializerOptions.DefaultIgnoreCondition =
+            System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+    });
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// ── SSE broadcast service (singleton — shared across all requests) ────────
+builder.Services.AddSingleton<SseService>();
+
+// ── Automated question dispatch background service ─────────────────────────
+builder.Services.AddHostedService<AutoDispatchService>();
+
+// ── CORS ──────────────────────────────────────────────────────────────────
+var allowedOrigins = (builder.Configuration["AllowedOrigins"] ?? "http://localhost:3000,http://localhost:5173")
+    .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(policy =>
+        policy.WithOrigins(allowedOrigins)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials()));
+
+// ── Rate limiting (brute-force protection on /api/login) ─────────────────
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("login", opt =>
+    {
+        opt.Window               = TimeSpan.FromMinutes(15);
+        opt.PermitLimit          = 10;
+        opt.QueueLimit           = 0;
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    });
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+});
+
+// ── Email (optional — leave SMTP config empty to disable) ─────────────────
+builder.Services.AddSingleton<EmailService>();
+
+var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sertec Dashboard API V1");
+        // Ha azt szeretnéd, hogy a localhost:PORT/ címen rögtön a Swagger nyíljon meg:
+        // c.RoutePrefix = string.Empty; 
+    });
+}
+// ── Ensure wwwroot/docs/ exists for uploaded PDF files ────────────────────
+var wwwroot  = app.Environment.WebRootPath ?? Path.Combine(app.Environment.ContentRootPath, "wwwroot");
+var docsPath = Path.Combine(wwwroot, "docs");
+Directory.CreateDirectory(docsPath);
+
+// ── Auto-migrate and seed the database on first run ───────────────────────
+using (var scope = app.Services.CreateScope())
+{
+    var db     = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    // Migration and seeding are separated so a migration failure
+    // (e.g. tables already exist) never blocks the seeder from running.
+    try
+    {
+        await db.Database.MigrateAsync();
+        logger.LogInformation("Migrations applied.");
+    }
+    catch (Exception ex)
+    {
+        logger.LogWarning(ex, "Migration skipped (tables may already exist): {Message}", ex.Message);
+    }
+
+    try
+    {
+        await DbSeeder.SeedAsync(db);
+        logger.LogInformation("Database ready.");
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Seeder failed: {Message}", ex.Message);
+        Console.Error.WriteLine($"[STARTUP ERROR] Seeder failed: {ex}");
+    }
+}
+
+// ── Middleware pipeline ───────────────────────────────────────────────────
+
+if (!app.Environment.IsDevelopment())
+    app.UseHttpsRedirection();
+
+app.UseCors();
+app.UseRateLimiter();
+
+// Serve the React SPA and uploaded docs from wwwroot/
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+app.MapControllers();
+
+// React Router catch-all
+app.MapFallbackToFile("index.html");
+
+app.Run();
